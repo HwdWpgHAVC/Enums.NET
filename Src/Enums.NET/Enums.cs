@@ -134,11 +134,11 @@ namespace EnumsNET
                     var name = field.Name;
                     var value = fieldDictionary != null ? fieldDictionary[name] : (TUnderlying)field.GetValue(null)!;
                     var attributesArray =
-#if TYPE_REFLECTION
+//#if TYPE_REFLECTION
                         Attribute.GetCustomAttributes(field, false);
-#else
-                        field.GetCustomAttributes(false).ToArray();
-#endif
+//#else
+                        //field.GetCustomAttributes(false).ToArray();
+//#endif
                     var attributes = attributesArray.Length == 0 ? AttributeCollection.Empty : new AttributeCollection(attributesArray);
 
                     var member = new EnumMemberInternal<TUnderlying, TUnderlyingOperations>(value, name, attributes);

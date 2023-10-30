@@ -37,7 +37,8 @@ namespace EnumsNET
     internal static class ReflectionUtility
     {
 #if !TYPE_REFLECTION
-        public static IEnumerable<Attribute> GetCustomAttributes(this Type type, bool inherit) => type.GetTypeInfo().GetCustomAttributes(inherit);
+        public static IEnumerable<Attribute> GetCustomAttributes(this Type type, bool inherit) => Attribute.GetCustomAttributes(Assembly.GetAssembly(typeof(ReflectionUtility))!, inherit);
+        
 
         public static IEnumerable<Type> GetInterfaces(this Type type) => type.GetTypeInfo().ImplementedInterfaces;
 
